@@ -1,33 +1,6 @@
 # Complete Installation Guide - Camera Video Buffering System
 
-## 🗂️ Folder Structure
 
-```
-project-root/
-├── frontend/                     # React Frontend (Current Lovable Project)
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── VideoManager.tsx
-│   │   │   ├── VideoList.tsx
-│   │   │   ├── VideoCard.tsx
-│   │   │   └── VideoPlayer.tsx
-│   │   └── pages/
-│   │       └── Index.tsx
-│   └── package.json
-├── backend/                      # Node.js Backend
-│   ├── server.js
-│   ├── package.json
-│   ├── .env
-│   ├── src/
-│   │   └── services/
-│   │       ├── CameraBuffer.js
-│   │       ├── VideoClipper.js
-│   │       └── DatabaseService.js
-│   └── storage/
-│       ├── videos/              # Final clips storage
-│       ├── buffer/              # Rolling buffer segments
-│       ├── temp/                # Temporary files
-│       └── database.db          # SQLite database
 └── README.md
 ```
 
@@ -41,7 +14,7 @@ mkdir camera-buffer-backend
 cd camera-buffer-backend
 ```
 
-2. **Copy these files from the Lovable project:**
+2. ** these fill project:**
    - Copy `backend-package.json` → rename to `package.json`
    - Copy `backend-server.js` → rename to `server.js`
    - Copy `backend-env-example` → rename to `.env`
@@ -50,17 +23,12 @@ cd camera-buffer-backend
 ```bash
 mkdir -p src/services
 ```
-   - Copy `backend-CameraBuffer.js` → `src/services/CameraBuffer.js`
-   - Copy `backend-VideoClipper.js` → `src/services/VideoClipper.js`
-   - Copy `backend-DatabaseService.js` → `src/services/DatabaseService.js`
+   -  `backend-CameraBuffer.js` 
+   -  `backend-VideoClipper.js` 
+   -  `backend-DatabaseService.js`
 
 4. **Install FFmpeg (Required!)**
 ```bash
-# Ubuntu/Debian:
-sudo apt update && sudo apt install ffmpeg
-
-# macOS:
-brew install ffmpeg
 
 # Windows: Download from https://ffmpeg.org
 ```
@@ -86,7 +54,7 @@ curl http://localhost:3001/api/health
 curl -X POST http://localhost:3001/api/store
 ```
 
-3. **View in Frontend**: Open your Lovable preview and click "Store Clip"
+3. **View in Frontend**: click "Store Clip"
 
 ## ⚙️ Configuration
 
@@ -96,21 +64,6 @@ curl -X POST http://localhost:3001/api/store
 ```env
 CAMERA_SOURCE=/dev/video0
 ```
-
-**IP/RTSP Camera**
-```env
-RTSP_URL=rtsp://username:password@192.168.1.100:554/stream
-```
-
-### Test Your Camera
-```bash
-# Test USB camera
-ffmpeg -f v4l2 -i /dev/video0 -t 5 test.mp4
-
-# List available cameras (Linux)
-v4l2-ctl --list-devices
-```
-
 ## 🔧 Development vs Production
 
 ### Development
@@ -118,21 +71,15 @@ v4l2-ctl --list-devices
 - Backend runs on localhost:3001
 - Frontend runs on localhost:8080
 
-### Production
-- Replace mock data with actual API calls
-- Use actual camera streams
-- Deploy backend to cloud service
-- Update CORS settings
-
 ## 📝 Key Features Implemented
 
 ### Backend
 ✅ Continuous camera buffering (60-second rolling buffer)  
 ✅ Smart video clipping (30s before + 30s after trigger)  
 ✅ RESTful API endpoints  
-✅ SQLite database for metadata  
+✅ SQLite database   
 ✅ Video streaming with range support  
-✅ Multiple camera source support  
+ 
 
 ### Frontend
 ✅ Beautiful video management interface  
@@ -171,19 +118,3 @@ v4l2-ctl --list-devices
 | POST | `/api/store` | Trigger clip creation |
 | DELETE | `/api/videos/:id` | Delete clip |
 
-## 🎯 Next Steps
-
-1. **Test with real camera**: Connect USB camera or configure RTSP
-2. **Customize settings**: Adjust buffer duration, clip length
-3. **Add features**: Thumbnails, metadata, user authentication
-4. **Deploy**: Use PM2, Docker, or cloud services
-5. **Monitor**: Add logging, health checks, alerts
-
-## 💡 Tips
-
-- Start with USB camera for easiest setup
-- Monitor storage space (clips can be large)
-- Use SSD for better video I/O performance
-- Consider hardware encoding for high-resolution cameras
-
-The system is ready to use! The frontend shows a beautiful interface with mock data, and the backend will handle actual camera buffering and clipping once you connect a camera.
