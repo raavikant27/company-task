@@ -1,0 +1,30 @@
+# Server Configuration
+PORT=3001
+NODE_ENV=development
+
+# Camera Configuration
+# Choose one of the following camera sources:
+
+# USB Camera (default)
+CAMERA_SOURCE=/dev/video0
+
+# RTSP Stream (IP Camera)
+# RTSP_URL=rtsp://username:password@192.168.1.100:554/stream
+
+# HTTP Stream (Webcam/HTTP camera)
+# HTTP_URL=http://192.168.1.100:8080/video
+
+# Buffer Configuration
+BUFFER_DURATION=60          # seconds
+SEGMENT_DURATION=2          # seconds per segment
+
+# Storage Configuration
+STORAGE_PATH=./storage
+MAX_CLIPS=100               # Maximum number of clips to store
+
+# Database Configuration
+DATABASE_PATH=./storage/database.db
+
+# Security (optional)
+API_KEY=your-api-key-here
+CORS_ORIGINS=http://localhost:8080,http://localhost:3000
