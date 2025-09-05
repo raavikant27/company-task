@@ -2,79 +2,37 @@
 
 A Node.js backend service that continuously buffers camera footage and creates 60-second clips (30s before + 30s after) when triggered.
 
-## Features
 
-- 🎥 **Continuous Camera Buffering**: Maintains a rolling 60-second buffer
-- ✂️ **Smart Clipping**: Creates clips with 30s before and 30s after trigger
-- 🗄️ **Multiple Camera Support**: USB, RTSP, HTTP cameras
-- 💾 **SQLite Database**: Stores clip metadata
-- 🎞️ **Video Streaming**: Serves videos with range request support
-- 🔄 **RESTful API**: Complete CRUD operations for video clips
+
+-  **Continuous Camera Buffering**: Maintains a rolling 60-second buffer
+- **Smart Clipping**: Creates clips with 30s before and 30s after trigger
+-  **Multiple Camera Support**: USB, RTSP, HTTP cameras
+-  **SQLite Database**: Stores clip metadata
+-  **Video Streaming**: Serves videos with range request support
+-  **RESTful API**: Complete CRUD operations for video clips
 
 ## Prerequisites
 
 ### Required Software
 ```bash
 # FFmpeg (required for video processing)
-# Ubuntu/Debian:
-sudo apt update
-sudo apt install ffmpeg
-
-# macOS:
-brew install ffmpeg
 
 # Windows:
 # Download from https://ffmpeg.org/download.html
 ```
 
-### Hardware Requirements
-- Camera (USB webcam, IP camera, or RTSP stream)
-- Minimum 4GB RAM (8GB recommended)
-- At least 10GB storage space for video clips
-
 ## Installation
 
-1. **Create Backend Directory**
-```bash
-mkdir camera-buffer-backend
-cd camera-buffer-backend
-```
-
-2. **Copy Backend Files**
-Copy all the backend files I provided:
-- `package.json` (from backend-package.json)
-- `server.js` (from backend-server.js)
-- Create `src/services/` directory and copy:
-  - `CameraBuffer.js`
-  - `VideoClipper.js`
-  - `DatabaseService.js`
-
-3. **Install Dependencies**
+. **Install Dependencies**
 ```bash
 npm install
-```
-
-4. **Setup Environment**
-```bash
-# Copy environment file
-cp .env.example .env
-
-# Edit configuration
-nano .env
-```
-
-5. **Create Storage Directories**
-```bash
-mkdir -p storage/{videos,buffer,temp}
-```
-
-## Configuration
+``
 
 ### Camera Setup
 
 **USB Camera (Default)**
 ```env
-CAMERA_SOURCE=/dev/video0  # Linux
+
 CAMERA_SOURCE=0            # Windows (device index)
 ```
 
@@ -143,24 +101,7 @@ POST /api/store
 DELETE /api/videos/:id
 ```
 
-## Project Structure
 
-```
-camera-buffer-backend/
-├── server.js                 # Main server file
-├── package.json              # Dependencies
-├── .env                      # Configuration
-├── src/
-│   └── services/
-│       ├── CameraBuffer.js   # Camera buffering service
-│       ├── VideoClipper.js   # Video processing service
-│       └── DatabaseService.js # Database operations
-└── storage/
-    ├── videos/               # Final video clips
-    ├── buffer/              # Rolling buffer segments
-    ├── temp/                # Temporary processing files
-    └── database.db          # SQLite database
-```
 
 ## Troubleshooting
 
@@ -238,26 +179,6 @@ pm2 start server.js --name camera-buffer
 pm2 save
 pm2 startup
 ```
-
-### Using Docker
-```dockerfile
-FROM node:18-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production
-COPY . .
-EXPOSE 3001
-CMD ["npm", "start"]
-```
-
-## Development
-
-### Adding New Features
-1. Create new service in `src/services/`
-2. Add routes in `server.js`
-3. Update database schema if needed
-4. Add tests (recommended)
-
 ### Testing
 ```bash
 # Test clip creation
@@ -267,11 +188,7 @@ curl -X POST http://localhost:3001/api/store
 curl http://localhost:3001/api/videos
 ```
 
-## Support
 
-For issues and questions:
-1. Check logs for error messages
-2. Verify camera connectivity
 3. Ensure FFmpeg is properly installed
 4. Check storage permissions
 
