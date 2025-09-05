@@ -15,9 +15,9 @@ cd camera-buffer-backend
 ```
 
 2. ** these fill project:**
-   - Copy `backend-package.json` → rename to `package.json`
-   - Copy `backend-server.js` → rename to `server.js`
-   - Copy `backend-env-example` → rename to `.env`
+   - `backend-package.json` → rename to `package.json`
+   - `backend-server.js` → rename to `server.js`
+   - `backend-env-example` → rename to `.env`
 
 3. **Create services directory and copy files:**
 ```bash
