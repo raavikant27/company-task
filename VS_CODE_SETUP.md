@@ -4,13 +4,11 @@
 
 1. **Install Required Software**
 ```bash
-# Node.js (v18 or higher)
-# Download from: https://nodejs.org/
+
 
 # FFmpeg (Required for video processing)
 # Windows: Download from https://ffmpeg.org/download.html
-# macOS: brew install ffmpeg
-# Ubuntu: sudo apt install ffmpeg
+
 
 # Git
 # Download from: https://git-scm.com/
@@ -109,20 +107,6 @@ mkdir -p src/services
 mkdir -p storage/videos storage/buffer storage/temp
 ```
 
-### Step 4: Copy Project Files
-
-**Frontend Files to Copy:**
-- Copy all files from the Lovable project `src/` folder
-- Copy `tailwind.config.ts`
-- Copy `index.css`
-- Copy `vite.config.ts`
-
-**Backend Files to Copy:**
-- `server.js` (from backend-server.js)
-- `src/services/CameraBuffer.js` (from backend-CameraBuffer.js)
-- `src/services/VideoClipper.js` (from backend-VideoClipper.js)
-- `src/services/DatabaseService.js` (from backend-DatabaseService.js)
-- `.env` (from backend-env-example)
 
 ## 🔧 VS Code Configuration
 
@@ -255,41 +239,5 @@ camera-video-system/
    - Click "Store Clip" button
    - Check if clip appears in video list
 
-## 🔍 Troubleshooting
 
-**FFmpeg Issues:**
-```bash
-# Verify FFmpeg installation
-ffmpeg -version
-```
 
-**Port Conflicts:**
-```bash
-# Check what's running on ports
-netstat -an | grep :3001
-netstat -an | grep :8080
-```
-
-**Permission Issues:**
-```bash
-# Fix storage permissions (Linux/Mac)
-chmod -R 755 backend/storage/
-```
-
-## 🎯 Development Workflow
-
-1. **Start Development:**
-   - Open VS Code
-   - Run both backend and frontend terminals
-   - Use VS Code's integrated terminal for commands
-
-2. **Making Changes:**
-   - Frontend: Hot reload on save
-   - Backend: Nodemon restarts automatically
-
-3. **Debugging:**
-   - Use VS Code debugger for Node.js
-   - Use browser dev tools for React
-   - Check terminal logs for errors
-
-Your project is now ready to run in VS Code! 🚀
