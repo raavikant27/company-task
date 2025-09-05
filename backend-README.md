@@ -165,20 +165,7 @@ FFMPEG_CRF=28
 4. **File Size Limits** - Set maximum clip storage
 5. **Network Security** - Use HTTPS in production
 
-## Production Deployment
 
-### Using PM2
-```bash
-# Install PM2
-npm install -g pm2
-
-# Start application
-pm2 start server.js --name camera-buffer
-
-# Save PM2 configuration
-pm2 save
-pm2 startup
-```
 ### Testing
 ```bash
 # Test clip creation
@@ -192,6 +179,3 @@ curl http://localhost:3001/api/videos
 3. Ensure FFmpeg is properly installed
 4. Check storage permissions
 
-## License
-
-MIT License - See LICENSE file for details
