@@ -24,9 +24,7 @@
 
 ### Step 1: Create Project Directory
 ```bash
-# Create main project folder
-mkdir camera-video-system
-cd camera-video-system
+
 ```
 
 ### Step 2: Setup Frontend
